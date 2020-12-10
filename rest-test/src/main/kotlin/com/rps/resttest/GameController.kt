@@ -4,24 +4,14 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 class GameController {
-    var rules = Rules()
-    @RequestMapping("/")
-    fun home(): String {
-        return "Welcome players!"
-    }
-
-    @GetMapping("/playold")
-    fun playold(@RequestParam(value = "handType", defaultValue = "Rock") handType: String): Hand {
-        return Hand(handType)
-    }
+    val rules = Rules()
+    val handGenerator = HandGenerator()
 
     @PostMapping("/play")
-    fun play(@RequestBody hand: Hand): GameResult{
-        val computerHand = generateComputerHand()
-        return GameResult(rules.getResultMessage(hand.handShape, computerHand.handShape), computerHand.handShape)
+    fun play(@RequestBody hand: Hand): GameResult {
+        val computerHand = handGenerator.generateComputerHand()
+        val computerHandShape = computerHand.handShape
+        return GameResult(rules.getResultMessage(hand.handShape, computerHandShape), computerHandShape)
     }
 
-    fun generateComputerHand(): Hand {
-        return Hand(rules.handShapes.random())
-    }
 }
