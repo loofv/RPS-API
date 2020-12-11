@@ -1,5 +1,4 @@
 # RPS-API
-Rock paper scissors API
 
 Hello and welcome to this simple rock, paper, scissors API!
 
