@@ -13,3 +13,4 @@ curl -H "Content-Type: application/json" -X POST -d '{
     "handShape": "ROCK"
 }' http://localhost:8080/play
 5. The server returns the game result. Enjoy! Note: The game accepts "ROCK", "PAPER" and "SCISSORS" as valid hand shapes.
+ 
